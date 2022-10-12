@@ -1,0 +1,134 @@
+#logo {
+    width: 475px;
+    animation: hw5_move 5s;
+}
+/* step 1 - animate logo with keyframes */
+@keyframes hw5_move {
+    from{width: 25px;}
+    to{width: 475px;}
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+/* step 2 - use google fonts poppin and create background image and backup color */
+body{
+    font-family: "Poppins", serif;  
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+/* step 3 - add flex to header to match ex */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+/* step 4 - add flex to links to match ex*/
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+/* step 5 - style visited links to be same color as link originally*/
+a:link, a:visited {
+    color: blue;
+}
+/* step 6 - style children of card class with colors and top corners curved*/
+.card > header{
+    background-color: #288088;
+    border: 2px solid #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+/* step 7 - add flex-basis to cards so all same size*/
+.card {
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    flex-basis: 450px;
+    
+}
+/* step 8 - add flex and wrap for flex basis */
+.pricing {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/* step 9 - add border and spacing for gallery images */
+.gallery img{
+    border: 10px solid #50c7c7;
+    margin: 10px;
+    width: 300px;
+}
+/* step 10 - add flex to gallery to look like example at different sizes*/
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/* step 11 - redo flex display for larger screens to match ex */
+@media screen and (min-width : 900px){
+    header, .nav_links {
+        display:flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+    }
+    /* step 12 - add flex direction and flex-basis to make specific size of all cards*/
+    .pricing {
+        display: flex;
+        flex-direction: row;
+        /* flex-grow: 0;
+        flex-shrink: 0; */
+    }
+    .card{
+        flex-basis: 275px;
+    }
+    /* step 13 - create sticky header thata is the direct child of body */
+    body > header{
+        position: sticky;
+        width: 100%;
+        z-index: 1;
+        top: 0;
+    }
+}
+/* step 14 - logo shouldn't be animated if prefers reduce motion is on */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation:none;
+    }
+}
+/* step 15 & 16- change font in print mode and get rid of background image */
+@media print {
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+    /* step 17 - make nav and nav links spaced apart like example */
+    .nav_links, nav {
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    /* step 18 - elements align along bottom of screen - height doesn't matter */
+    .pricing {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    /* step 19 - add border and flex basis to card class */
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+    /* step 20 - get rid of gallery in print view */
+    .gallery, #gallery {
+        display: none;
+    }
+    /* step 21 - add thumbs up to second sentence in each card */
+    .pricing li:nth-child(2):after{
+        content: '👍'
+    }
+}
